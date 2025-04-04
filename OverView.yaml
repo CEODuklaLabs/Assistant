@@ -1,0 +1,25 @@
+show_name: true
+show_icon: true
+show_state: true
+type: glance
+entities:
+  - entity: sensor.<printer>_current_print_state
+    name: Stav
+    tap_action: none
+  - entity: sensor.<printer>_progress
+    name: Progess
+    tap_action: none
+  - entity: sensor.<printer>_slicer_print_duration_estimate
+    name: Zbývá
+    tap_action: none
+  - entity: sensor.<printer>_print_duration
+    name: Doba tisku
+    tap_action: none
+  - entity: sensor.<printer>_extruder_temperature
+    name: Extruder
+    tap_action: none
+  - entity: sensor.<printer>_bed_temperature
+    name: Hotbed
+    tap_action: none
+state_color: true
+columns: 2

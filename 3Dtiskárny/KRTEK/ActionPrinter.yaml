@@ -1,0 +1,302 @@
+square: false
+type: grid
+columns: 1
+cards:
+  - type: conditional
+    conditions:
+      - entity: input_select.krtek_display
+        state: Kamera
+    card:
+      type: picture-entity
+      entity: camera.krtek_webcam_2
+      camera_image: camera.krtek_webcam_2
+      camera_view: live
+      show_state: false
+      show_name: false
+  - type: conditional
+    conditions:
+      - entity: input_select.krtek_display
+        state: Model
+    card:
+      type: picture-entity
+      entity: sensor.krtek_filename
+      camera_image: sensor.krtek_filename
+      camera_view: live
+      show_state: false
+      show_name: false
+  - type: conditional
+    conditions:
+      - entity: input_select.krtek_display
+        state: Motion
+    card:
+      square: true
+      type: grid
+      cards:
+        - show_name: true #bulb
+          show_icon: true
+          icon: mdi:lightbulb-on
+          type: button
+          tap_action:
+            action: toggle
+        - show_name: true #up
+          show_icon: true
+          icon: mdi:arrow-up-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_y_plus
+        - show_name: true #empty
+          show_icon: true
+          type: button
+          tap_action:
+            action: perform-action
+            target:
+              entity_id: input_select.krtek_motion
+            perform_action: input_select.select_option
+        - show_name: true #up Z
+          show_icon: true
+          icon: mdi:arrow-up-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_z_plus
+        - show_name: true #left
+          show_icon: true
+          icon: mdi:arrow-left-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_x_minus
+        - show_name: true #home
+          show_icon: true
+          type: button
+          icon: mdi:home
+          tap_action:
+            action: call-service
+            service: script.move_home_xy
+        - show_name: true #right
+          show_icon: true
+          icon: mdi:arrow-right-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_x_plus
+        - show_name: true 
+          show_icon: true
+          icon: mdi:home
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_home_z
+        - show_name: true
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+        - show_name: true
+          show_icon: true
+          icon: mdi:arrow-down-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_y_minus
+        - show_name: true
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+        - show_name: true
+          show_icon: true
+          icon: mdi:arrow-down-bold
+          type: button
+          tap_action:
+            action: call-service
+            service: script.move_z_minus
+      columns: 4
+  - type: conditional
+    conditions:
+      - entity: input_select.krtek_display
+        state: Temperature
+    card:
+      type: button
+      name: Teploty
+  - type: conditional
+    conditions:
+      - entity: input_select.krtek_display
+        state: Filament
+    card:
+      show_name: true
+      show_icon: true
+      type: button
+      name: Filament
+  - type: horizontal-stack
+    cards:
+      - type: button
+        name: Kamera
+        icon: mdi:camera
+        tap_action:
+          action: call-service
+          service: input_select.select_option
+          data:
+            entity_id: input_select.krtek_display
+            option: Kamera
+        show_icon: true
+        show_name: true
+        hold_action:
+          action: none
+      - type: button
+        name: Model
+        icon: mdi:cube
+        tap_action:
+          action: call-service
+          service: input_select.select_option
+          data:
+            entity_id: input_select.krtek_display
+            option: Model
+        show_icon: true
+        show_name: true
+        hold_action:
+          action: none
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: perform-action
+          target:
+            entity_id: input_select.krtek_display
+          perform_action: input_select.select_option
+          data:
+            option: Motion
+        icon: mdi:motion
+        name: Pohyb
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: white;
+            }
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: perform-action
+          target:
+            entity_id: input_select.krtek_display
+          perform_action: input_select.select_option
+          data:
+            option: Temperature
+        icon: mdi:thermometer-lines
+        name: Teploty
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: red;
+            }
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: perform-action
+          target:
+            entity_id: input_select.krtek_display
+          perform_action: input_select.select_option
+          data:
+            option: Filament
+        icon: mdi:alpha-f-box
+        name: Filament
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: red;
+            }
+  - type: horizontal-stack
+    cards:
+      - type: button
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.krtek_emergency_stop
+        name: STOP
+        icon: mdi:alert-octagon-outline
+        show_state: false
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: red;
+            }
+      - type: button
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.krtek_firmware_restart
+        name: Reset
+        icon: mdi:restart-alert
+        show_icon: true
+        show_name: true
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: green;
+            }
+      - type: button
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.krtek_pause_print
+        icon: mdi:motion-pause-outline
+        name: Pause
+        show_icon: true
+        show_name: true
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: yellow;
+            }
+      - type: button
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.krtek_resume_print
+        icon: mdi:motion-play-outline
+        name: Resume
+        show_icon: true
+        show_name: true
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: green;
+            }
+      - type: button
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.krtek_cancel_print
+        icon: mdi:cancel
+        name: Cancel
+        show_name: true
+        show_icon: true
+        hold_action:
+          action: none
+        card_mod:
+          style: |
+            :host {
+              --paper-item-icon-color: red;
+            }

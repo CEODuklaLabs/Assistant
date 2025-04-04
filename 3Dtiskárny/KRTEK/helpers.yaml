@@ -1,0 +1,18 @@
+input_select:
+  krtek_display:
+    name: Zobrazení
+    options:
+      - Kamera
+      - Model
+      - Temperature
+      - Filament
+      - Motion
+    initial: Kamera
+
+  kretek_motion:
+    name: Motion
+    options:
+      - 0.1
+      - 1
+      - 10
+    initial: 1

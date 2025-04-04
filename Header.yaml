@@ -1,0 +1,29 @@
+square: false
+type: grid
+cards:
+  - show_name: true
+    show_icon: true
+    type: custom:button-card
+    tap_action:
+      action: none
+    name: <printer>
+    icon: mdi:printer-3d
+    icon_height: 10px
+    layout: icon_name
+    show_state: false
+    height: 30px
+  - show_name: true
+    show_icon: true
+    type: custom:button-card
+    name: Rozhraní
+    icon: mdi:network-pos
+    icon_height: 20px
+    layout: icon_name
+    show_state: false
+    tap_action:
+      action: url
+      url_path: <url>
+columns: 2
+grid_options:
+  columns: 24
+  rows: auto

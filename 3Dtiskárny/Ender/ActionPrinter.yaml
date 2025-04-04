@@ -9,14 +9,14 @@ cards:
     show_name: false
     camera_view: live
     type: picture-entity
-    entity: camera.krtek_webcam_2
-    camera_image: camera.krtek_webcam_2
+    entity: camera.<printer>_webcam_2
+    camera_image: camera.<printer>_webcam_2
   - type: horizontal-stack
     cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_emergency_stop
+          service: button.<printer>_emergency_stop
           service_data: {}
           target: {}
         name: Kamera
@@ -29,7 +29,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_firmware_restart
+          service: button.<printer>_firmware_restart
           service_data: {}
           target: {}
         name: Model
@@ -58,7 +58,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_resume_print
+          service: button.<printer>_resume_print
           service_data: {}
           target: {}
         icon: mdi:thermometer-lines
@@ -75,7 +75,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_cancel_print
+          service: button.<printer>_cancel_print
           service_data: {}
           target: {}
         icon: mdi:alpha-f-box
@@ -94,7 +94,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_emergency_stop
+          service: button.<printer>_emergency_stop
           service_data: {}
           target: {}
         name: STOP
@@ -112,7 +112,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_firmware_restart
+          service: button.<printer>_firmware_restart
           service_data: {}
           target: {}
         name: Reset
@@ -129,7 +129,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_pause_print
+          service: button.<printer>_pause_print
           service_data: {}
           target: {}
         icon: mdi:motion-pause-outline
@@ -146,7 +146,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_resume_print
+          service: button.<printer>_resume_print
           service_data: {}
           target: {}
         icon: mdi:motion-play-outline
@@ -163,7 +163,7 @@ cards:
       - type: button
         tap_action:
           action: call-service
-          service: button.ender3v3_5273_cancel_print
+          service: button.<printer>_cancel_print
           service_data: {}
           target: {}
         icon: mdi:cancel

@@ -1,0 +1,108 @@
+
+
+move_x_plus:
+  alias: Posun X+
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_x_0_1plus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_x_1plus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_x_10plus
+            {% else %}
+              button.krtek_macro_posun_x_1plus
+            {% endif %}
+
+move_x_minus:
+  alias: Posun X-
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_x_0_1minus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_x_1minus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_x_10minus
+            {% else %}
+              button.krtek_macro_posun_x_1minus
+            {% endif %}
+move_y_plus:
+  alias: Posun Y+
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_y_0_1plus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_y_1plus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_y_10plus
+            {% else %}
+              button.krtek_macro_posun_y_1plus
+            {% endif %}
+
+move_y_minus:
+  alias: Posun Y-
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_y_0_1minus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_y_1minus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_y_10minus
+            {% else %}
+              button.krtek_macro_posun_y_1minus
+            {% endif %}
+
+move_z_plus:
+  alias: Posun Z+
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_z_0_1plus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_z_1plus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_z_10plus
+            {% else %}
+              button.krtek_macro_posun_z_1plus
+            {% endif %}
+
+move_z_minus:
+  alias: Posun Z-
+  sequence:
+    - service: button.press
+      entity_id: >
+            {% set step = states('input_select.kretek_motion') %}
+            {% if step == '0.1' %}
+              button.krtek_macro_posun_z_0_1minus
+            {% elif step == '1' %}
+              button.krtek_macro_posun_z_1minus
+            {% elif step == '10' %}
+              button.krtek_macro_posun_z_10minus
+            {% else %}
+              button.krtek_macro_posun_z_1minus
+            {% endif %}
+
+move_home_xy:
+  alias: Domů XY
+  sequence:
+    - service: button.press
+      entity_id: button.krtek_macro_posun_home_xy
+
+move_home_z:
+  alias: Domů Z
+  sequence:
+    - service: button.press
+      entity_id: button.krtek_macro_posun_home_z
